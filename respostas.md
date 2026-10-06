@@ -39,11 +39,13 @@ docker push richsrd/viaserra-portal:1.0-26175244
 
 | # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
 |---|---|---|---|---|
-| 1 | | | | | 
-| 2 | | | | |
+| 1 | COPY pagina/ | A pasta pagina/ não existia. A página estava na pasta site/ | O docker build apresentou erro dizendo que a pasta /pagina não foi encontrada. | Alterei para COPY site/ . | 
+| 2 | CMD ["nginx"] | O Nginx era iniciado em segundo plano e o processo principal do container terminava. | O container iniciava, mas aparecia como Exited (0) no docker ps -a. | Alterei para CMD ["nginx", "-g", "daemon off;"] |
 | 3 | | | | |
 
 6. Qual a diferença entre `-p 7042:80` e `-p 80:7042` no `docker run`? Qual dos dois números é a porta do container?
+
+7042 é a porta do computador e 80 é a porta do container
 
 ## Parte 4 · Primeiro docker-compose
 
