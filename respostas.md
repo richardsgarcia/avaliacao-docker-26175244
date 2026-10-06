@@ -1,9 +1,9 @@
 # Respostas · Avaliação Prática de Docker · ViaSerra Transportes (Turma C)
 
-Nome:
-Matrícula:
-Usuário do GitHub:
-Usuário do Docker Hub:
+Nome: Richard Sousa Garcia
+Matrícula: 26175244
+Usuário do GitHub: richardsgarcia
+Usuário do Docker Hub: richsrd
 
 Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta curta e certa vale mais
 do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile vale zero.
@@ -11,15 +11,27 @@ do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile val
 ## Parte 1 · Dockerfile do portal
 
 1. Qual imagem base você usou e qual o tamanho final da imagem do portal (saída de `docker images`)?
+A imagem base foi o Nginx:1.29 e o tamnho final da imagem foi de 63MB
 
 2. Em qual pasta do container o Nginx procura os arquivos do site? Mostre o comando que você usou para
    conferir que o `index.html` está lá dentro.
 
+Ela procura nesta daqui: /usr/share/nginx/html/ 
+
+O comando que eu usei foi:
+docker run -d --name teste-portal -p 8044:80 richsrd/viaserra-portal:1.0-26175244
+
 ## Parte 2 · Docker Hub
 
 3. Nome completo da imagem publicada e link público do repositório no Docker Hub.
+Nome completo da imagem é: richsrd/viaserra-portal:1.0-26175244
+Link público: https://hub.docker.com/r/richsrd/viaserra-portal
 
 4. Se você mudar o HTML, quais comandos precisa rodar para que a versão nova chegue ao Docker Hub?
+Eu teria que reconstruir a imagem e fazer o push
+
+docker build -t richsrd/viaserra-portal:1.0-26175244 ./portal
+docker push richsrd/viaserra-portal:1.0-26175244
 
 ## Parte 3 · Página de manutenção
 
@@ -27,7 +39,7 @@ do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile val
 
 | # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
 |---|---|---|---|---|
-| 1 | | | | |
+| 1 | | | | | 
 | 2 | | | | |
 | 3 | | | | |
 
